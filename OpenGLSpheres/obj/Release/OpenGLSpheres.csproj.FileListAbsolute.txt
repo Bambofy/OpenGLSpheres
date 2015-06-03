@@ -15,3 +15,10 @@ C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\bin\Release\LibNoise.xml
 C:\Users\Richard\Documents\GitHub\OpenGLSpheres\OpenGLSpheres\bin\Release\OpenGLSpheres.exe.config
 C:\Users\Richard\Documents\GitHub\OpenGLSpheres\OpenGLSpheres\obj\Release\OpenGLSpheres.exe
 C:\Users\Richard\Documents\GitHub\OpenGLSpheres\OpenGLSpheres\obj\Release\OpenGLSpheres.pdb
+C:\Users\Richard\Documents\GitHub\OpenGLSpheres\OpenGLSpheres\bin\Release\OpenGLSpheres.exe
+C:\Users\Richard\Documents\GitHub\OpenGLSpheres\OpenGLSpheres\bin\Release\OpenGLSpheres.pdb
+C:\Users\Richard\Documents\GitHub\OpenGLSpheres\OpenGLSpheres\bin\Release\LibNoise.dll
+C:\Users\Richard\Documents\GitHub\OpenGLSpheres\OpenGLSpheres\bin\Release\OpenTK.dll
+C:\Users\Richard\Documents\GitHub\OpenGLSpheres\OpenGLSpheres\bin\Release\LibNoise.xml
+C:\Users\Richard\Documents\GitHub\OpenGLSpheres\OpenGLSpheres\bin\Release\OpenTK.xml
+C:\Users\Richard\Documents\GitHub\OpenGLSpheres\OpenGLSpheres\obj\Release\OpenGLSpheres.csprojResolveAssemblyReference.cache

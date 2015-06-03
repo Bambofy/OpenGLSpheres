@@ -38,26 +38,22 @@ layout (location = 1) in vec3 vertex_normal;
 uniform mat4 proj;
 uniform mat4 view;
 uniform mat4 model;
-
-// 0 -> 2PI
-uniform float ticker;
 uniform int isPickup;
 
 out vec4 vpos;
 out vec4 vnormal;
                          
 // the normals given from the program is just vertex_position.normalized() so ignore.
-        
 void main()
 {
-    // model space
+    // view space
     vnormal = normalize(vec4(vertex_position, 1.0)); //vec4(vertex_normal, 0.0);
 
     // if it's a pickup then oscillate.
     vec4 offset = vec4(0, 0, 0, 0);
     if (isPickup == 1)
     {
-        float length = 1;// vertex_normal.x + (sin(ticker) / 10);
+        float length = 1;           // vertex_normal.x + (sin(ticker) / 10);
         offset = vnormal * length;
     }
 
@@ -144,7 +140,7 @@ void main()
             GL.UniformMatrix4(GL.GetUniformLocation(shaderID, "proj"), false, ref _projectionMatrix);
 
             player = new Player(new Vector3(0, 0, 0));
-            pickup = new Pickup(new Vector3(2, 0, 0));
+            pickup = new Pickup(new Vector3(20, 0, 0));
         }
 
 
@@ -164,7 +160,6 @@ void main()
             {
                 player.SplitTriangles();
             }
-
 
             // Debug parameters //
             // Wireframe mode
@@ -200,10 +195,12 @@ void main()
             UpdateMouse();
             UpdateKeyboard();
 
-            _ticker += 0.1f;
-            if (_ticker > Math.PI) _ticker = 0;
-
-            GL.Uniform1(GL.GetUniformLocation(shaderID, "ticker"), _ticker);
+            // Check for sphere collisions
+            if (Sphere.simpleSphereCollision(player, pickup))
+            {
+                Console.WriteLine("Hit");
+                Sphere.sphereCollisionResponse(player, pickup);
+            }
         }
 
         private Vector2 previousMouseState;

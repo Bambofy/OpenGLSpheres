@@ -16,11 +16,11 @@ namespace OpenGLSpheres
         static public bool simpleSphereCollision(Sphere s1, Sphere s2)
         {
             // Vector between centres of each sphere.
-            Vector3 distance = s1._origin - s2._origin;
+            Vector3 distance = (s1._origin) - (s2._origin);
 
             float length = distance.Length;
 
-            float sumradius = s1._radius + s2._radius;
+            float sumradius = 2*(s1._radius + s2._radius);
 
             if (length <= sumradius)
             {
@@ -64,7 +64,7 @@ namespace OpenGLSpheres
 
         protected Vector3 _velocity = Vector3.Zero;
         protected Vector3 _origin;
-        protected float _radius = 1;
+        protected float _radius;
         protected float _mass = 50;
         protected Vector4 _colour = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
         protected bool _flat;
