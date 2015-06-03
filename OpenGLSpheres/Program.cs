@@ -195,11 +195,9 @@ void main()
             UpdateMouse();
             UpdateKeyboard();
 
-            // Check for sphere collisions
-            if (Sphere.simpleSphereCollision(player, pickup))
+            using (Sphere winner = Sphere.SphereCollision(player, pickup))
             {
-                Console.WriteLine("Hit");
-                Sphere.sphereCollisionResponse(player, pickup);
+                Console.WriteLine("WINNAAA");
             }
         }
 
@@ -246,8 +244,6 @@ void main()
         protected override void OnUnload(EventArgs e)
         {
             GL.DeleteProgram(shaderID);
-            player.Delete();
-            pickup.Delete();
         }
     }
 }

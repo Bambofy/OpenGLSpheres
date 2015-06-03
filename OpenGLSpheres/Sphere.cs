@@ -11,58 +11,29 @@ using OpenTK.Graphics.OpenGL;
 
 namespace OpenGLSpheres
 {
-    public class Sphere
+    public class Sphere : IDisposable
     {
-        static public bool simpleSphereCollision(Sphere s1, Sphere s2)
+        static public Sphere SphereCollision(Sphere s1, Sphere s2)
         {
             // Vector between centres of each sphere.
-            Vector3 distance = (s1._origin) - (s2._origin);
-
-            float length = distance.Length;
-
-            float sumradius = 2*(s1._radius + s2._radius);
-
-            if (length <= sumradius)
+            float distance = (s1._origin - s2._origin).Length;
+            
+            // distance < s1.radius or s2.radius then collision!
+            if (distance <= s1._radius || distance <= s2._radius)
             {
-                return true;
+                if (s1._radius > s2._radius)
+                {
+                    return s1;
+                }
+                if (s1._radius < s2._radius)
+                {
+                    return s2;
+                }
             }
 
-            return false;
+            return null;
         }
 
-        static public void sphereCollisionResponse(Sphere a, Sphere b)
-        {
-            Vector3 U1x,U1y,U2x,U2y,V1x,V1y,V2x,V2y;
-
-
-	        float m1, m2, x1, x2;
-	        Vector3 v1temp, v1, v2, v1x, v2x, v1y, v2y, x;
-
-             // First, find the vector which will serve as a basis vector (x-axis), in an arbiary direction.
-            // It have to be normalized to get realistic results.
-            x = a._origin - b._origin;
-            x.Normalized();
-
-            // Then we calculate the x-direction velocity vector and the perpendicular y-vector.
-            v1 = a._velocity;
-            x1 = Vector3.Dot(x, v1);
-            v1x = x * x1;
-            v1y = v1 - v1x;
-            m1 = a._mass;
-
-            // Same procedure for the other sphere.
-            x = x*-1;
-            v2 = b._velocity;
-            x2 = Vector3.Dot(x, v2);
-            v2x = x*x2;
-            v2y = v2 - v2x;
-            m2 = b._mass;
-
-            a._velocity = new Vector3(v1x * (m1 - m2) / (m1 + m2) + v2x * (2 * m2) / (m1 + m2) + v1y);
-            b._velocity = new Vector3(v1x * (2 * m1) / (m1 + m2) + v2x * (m2 - m1) / (m1 + m2) + v2y);
-        }
-
-        protected Vector3 _velocity = Vector3.Zero;
         protected Vector3 _origin;
         protected float _radius;
         protected float _mass = 50;
@@ -316,7 +287,7 @@ namespace OpenGLSpheres
             GL.DisableVertexAttribArray(1);
         }
 
-        public void Delete()
+        public void Dispose()
         {
             GL.DeleteBuffer(VertexID);
             GL.DeleteBuffer(NormalID);
