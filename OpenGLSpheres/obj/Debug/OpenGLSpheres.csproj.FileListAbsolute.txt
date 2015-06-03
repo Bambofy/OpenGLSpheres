@@ -1,0 +1,12 @@
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\bin\Debug\OpenGLSpheres.exe.config
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\bin\Debug\OpenGLSpheres.exe
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\bin\Debug\OpenGLSpheres.pdb
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\bin\Debug\OpenTK.dll
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\bin\Debug\OpenTK.xml
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\obj\Debug\OpenGLSpheres.csprojResolveAssemblyReference.cache
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\obj\Debug\OpenGLSpheres.exe
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\obj\Debug\OpenGLSpheres.pdb
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\bin\Debug\sample3.jpg
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\bin\Debug\grass.png
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\bin\Debug\test.png
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\bin\Debug\miller.jpg

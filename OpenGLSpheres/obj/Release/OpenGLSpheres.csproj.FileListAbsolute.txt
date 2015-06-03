@@ -1,0 +1,14 @@
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\bin\Release\OpenGLSpheres.exe.config
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\bin\Release\grass.png
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\bin\Release\miller.jpg
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\bin\Release\sample3.jpg
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\bin\Release\test.png
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\bin\Release\OpenGLSpheres.exe
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\bin\Release\OpenGLSpheres.pdb
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\bin\Release\OpenTK.dll
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\bin\Release\OpenTK.xml
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\obj\Release\OpenGLSpheres.exe
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\obj\Release\OpenGLSpheres.pdb
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\obj\Release\OpenGLSpheres.csprojResolveAssemblyReference.cache
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\bin\Release\LibNoise.dll
+C:\Users\Richard\Desktop\OpenGLSpheres\OpenGLSpheres\bin\Release\LibNoise.xml
