@@ -10,12 +10,23 @@ namespace OpenGLSpheres
 {
     public class Player : Sphere
     {
+        private int _score = 0;
+        public int Score
+        {
+            get { return _score; }
+            set
+            {
+                _score = value;
+                _radius = (_score);
+            }
+        }
+
         public Camera Camera = new Camera();
         protected float Speed = 5f;
         public Vector3 Direction = Vector3.Zero;
 
         public Player(Vector3 origin)
-            : base(origin, 2f, true)
+            : base(origin, 1f, true)
         {
             // Locked means it will ignore rotation attribute.
             Camera.Position = new Vector3(0, 0, _radius);
@@ -50,17 +61,17 @@ namespace OpenGLSpheres
         {
             // always point the velocity towards the direction with length Speed
             Vector3 Velocity = Direction*Speed;
-            // Always move using Velocity
             _origin += Velocity*(float) dt;
 
-            var r2 = ((_radius*_radius)*2);
+
+            var r2 = 10 + ((_radius*_radius)*2);
             Camera.Position = _origin + new Vector3(0, 0, r2);
             GL.UniformMatrix4(GL.GetUniformLocation(ShaderID, "view"), false, ref Camera.ViewMatrix);
 
 
             // Calculate the lightpos from the direction we are travelling.
             // Direction is normalized.
-            Vector3 directionOffset = Direction * (r2);
+            Vector3 directionOffset = Direction * r2;
             Vector3 lightPos = Camera.Position + directionOffset;
             GL.Uniform3(GL.GetUniformLocation(ShaderID, "lightPos"), lightPos);
 
@@ -73,36 +84,6 @@ namespace OpenGLSpheres
             GL.Uniform4(GL.GetUniformLocation(ShaderID, "colour"), _colour);
 
             base.Render(ShaderID);
-        }
-
-        public void SetRadius(float n)
-        {
-            _radius = n;
-        }
-
-        public float GetRadius()
-        {
-            return _radius; 
-        }
-
-        public void MoveUp()
-        {
-            Direction.Y = 1;
-        }
-
-        public void MoveRight()
-        {
-            Direction.X = 1;
-        }
-
-        public void MoveLeft()
-        {
-            Direction.X = -1;
-        }
-
-        public void MoveDown()
-        {
-            Direction.Y = -1;
         }
     }
 }

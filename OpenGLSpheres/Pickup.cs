@@ -13,7 +13,7 @@ namespace OpenGLSpheres
         private Vector3 lightPosition;
 
         public Pickup(Vector3 origin)
-            : base(origin, 1f, true)
+            : base(origin, 1f, false)
         {
             Random rand = new Random();
 
@@ -47,7 +47,7 @@ namespace OpenGLSpheres
         public void Render(int ShaderID)
         {
             // always be above it.
-            Vector3 lightPos = _origin + new Vector3(0, 12, 0);
+            Vector3 lightPos = _origin + new Vector3(0, 0, 12);
             GL.Uniform3(GL.GetUniformLocation(ShaderID, "lightPos"), lightPos);
 
             GL.Uniform3(GL.GetUniformLocation(ShaderID, "lightColour"), Vector3.One);

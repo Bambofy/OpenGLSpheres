@@ -13,7 +13,7 @@ namespace OpenGLSpheres
 {
     public class Sphere : IDisposable
     {
-        static public Sphere SphereCollision(Sphere s1, Sphere s2)
+        static public Sphere SphereCollision(ref Player s1, ref Pickup s2)
         {
             // Vector between centres of each sphere.
             float distance = (s1._origin - s2._origin).Length;
@@ -32,6 +32,11 @@ namespace OpenGLSpheres
             }
 
             return null;
+        }
+
+        static public Sphere SphereCollision(ref Pickup s1, ref Player s2)
+        {
+            return SphereCollision(ref s2, ref s1);
         }
 
         protected Vector3 _origin;
@@ -269,7 +274,6 @@ namespace OpenGLSpheres
             // Translation/Scaling
             Matrix4 modelMatrix = Matrix4.CreateScale(_radius) * Matrix4.CreateTranslation(_origin);
             GL.UniformMatrix4(GL.GetUniformLocation(shaderID, "model"), false, ref modelMatrix);
-
 
             // Set vertex attribs.
             GL.EnableVertexAttribArray(0);
