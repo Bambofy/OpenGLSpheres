@@ -269,11 +269,11 @@ namespace OpenGLSpheres
             return returnNormals;
         }
 
-        public void Render(int shaderID)
+        public void Render(int ShaderID)
         {
             // Translation/Scaling
             Matrix4 modelMatrix = Matrix4.CreateScale(_radius) * Matrix4.CreateTranslation(_origin);
-            GL.UniformMatrix4(GL.GetUniformLocation(shaderID, "model"), false, ref modelMatrix);
+            GL.UniformMatrix4(GL.GetUniformLocation(ShaderID, "model"), false, ref modelMatrix);
 
             // Set vertex attribs.
             GL.EnableVertexAttribArray(0);

@@ -30,10 +30,10 @@ namespace OpenGLSpheres
         private List<Pickup> Pickups = new List<Pickup>();
         private List<Player> Players = new List<Player>();
 
-        private ShaderProgram _shaderProgram;
 
         protected override void OnLoad(EventArgs e)
         {
+            // Defaults
             Title = "OpenTK Spheres";
 
             Width = 1080;
@@ -43,15 +43,22 @@ namespace OpenGLSpheres
             CursorVisible = true;
             GL.Enable(EnableCap.DepthTest);
 
-            _shaderProgram = new ShaderProgram();
+            // Create our first sphere shader
+            ShaderProgram _sphereShaderProgram = new ShaderProgram();
+            _sphereShaderProgram.LoadShader("shaders/sphere_vs.glsl", ShaderType.VertexShader);
+            _sphereShaderProgram.LoadShader("shaders/sphere_fs.glsl", ShaderType.FragmentShader);
 
-            GL.Uniform2(_shaderProgram.GetUniformLocation("resolution"), new Vector2(Width, Height));
-            // MVP matrix init and loading //
+            // Give it to our handler
+            ShaderProgramHandler.AddProgram(_sphereShaderProgram);
+            ShaderProgramHandler.SetActive(0);
+
+            // MVP matrix init and loading 
+            GL.Uniform2(ShaderProgramHandler.GetUniformLocation("resolution"), new Vector2(Width, Height));
             _projectionMatrix = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(45f), Width/(float) Height,
                 0.5f, 3000);
+            GL.UniformMatrix4(ShaderProgramHandler.GetUniformLocation("proj"), false, ref _projectionMatrix);
 
-            GL.UniformMatrix4(_shaderProgram.GetUniformLocation("proj"), false, ref _projectionMatrix);
-
+            // Set up world objects
             Players.Add(new Player(new Vector3(0, 0, 0)));
             Pickups.Add(new Pickup(new Vector3(20, 0, 0)));
         }
@@ -62,7 +69,7 @@ namespace OpenGLSpheres
             base.OnResize(e);
             _projectionMatrix = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(45f), Width / (float)Height,
                 0.5f, 3000);
-            GL.UniformMatrix4(_shaderProgram.GetUniformLocation("proj"), false, ref _projectionMatrix);
+            GL.UniformMatrix4(ShaderProgramHandler.GetUniformLocation("proj"), false, ref _projectionMatrix);
             GL.Viewport(0,0, Width, Height);
         }
 
@@ -145,8 +152,8 @@ namespace OpenGLSpheres
         {
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-            foreach (var player in Players) player.Render(_shaderProgram.ID, e.Time);
-            foreach (var pickup in Pickups) pickup.Render(_shaderProgram.ID);
+            foreach (var player in Players) player.Render(e.Time);
+            foreach (var pickup in Pickups) pickup.Render();
 
             GL.Flush();
             SwapBuffers();
@@ -154,7 +161,8 @@ namespace OpenGLSpheres
 
         protected override void OnUnload(EventArgs e)
         {
-            _shaderProgram.Dispose();
+            ShaderProgramHandler.Dispose();
+
             foreach (var ply in Players) ply.Dispose();
             foreach (var pickup in Pickups) pickup.Dispose();
         }

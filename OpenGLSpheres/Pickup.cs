@@ -44,8 +44,10 @@ namespace OpenGLSpheres
             }
         }
 
-        public void Render(int ShaderID)
+        public void Render()
         {
+            var ShaderID = ShaderProgramHandler.GetProgramID();
+
             // always be above it.
             Vector3 lightPos = _origin + new Vector3(0, 0, 12);
             GL.Uniform3(GL.GetUniformLocation(ShaderID, "lightPos"), lightPos);

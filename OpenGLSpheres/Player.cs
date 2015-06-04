@@ -57,12 +57,13 @@ namespace OpenGLSpheres
             }
         }
 
-        public void Render(int ShaderID, double dt)
+        public void Render(double dt)
         {
+            int ShaderID = ShaderProgramHandler.GetProgramID();
+
             // always point the velocity towards the direction with length Speed
             Vector3 Velocity = Direction*Speed;
             _origin += Velocity*(float) dt;
-
 
             var r2 = 10 + ((_radius*_radius)*2);
             Camera.Position = _origin + new Vector3(0, 0, r2);

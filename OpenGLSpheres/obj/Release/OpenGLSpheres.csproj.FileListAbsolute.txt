@@ -22,3 +22,5 @@ C:\Users\Richard\Documents\GitHub\OpenGLSpheres\OpenGLSpheres\bin\Release\OpenTK
 C:\Users\Richard\Documents\GitHub\OpenGLSpheres\OpenGLSpheres\bin\Release\LibNoise.xml
 C:\Users\Richard\Documents\GitHub\OpenGLSpheres\OpenGLSpheres\bin\Release\OpenTK.xml
 C:\Users\Richard\Documents\GitHub\OpenGLSpheres\OpenGLSpheres\obj\Release\OpenGLSpheres.csprojResolveAssemblyReference.cache
+C:\Users\Richard\Documents\GitHub\OpenGLSpheres\OpenGLSpheres\bin\Release\shaders\sphere_fs.glsl
+C:\Users\Richard\Documents\GitHub\OpenGLSpheres\OpenGLSpheres\bin\Release\shaders\sphere_vs.glsl
